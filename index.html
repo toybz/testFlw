@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>repl.it</title>
+	<script src="https://checkout.flutterwave.com/v3.js">
+	</script>
+</head>
+<body>
+
+ 	<button style="margin-bottom:5vh" type="button" onClick="makePayment()">Pay Now</button>
+
+   <h2>Parameters Description:  </h2>
+
+   <img src="params.png" style="width:100vw"  alt="Payload Data" />
+
+<script>
+
+ let redirect_url = ""
+// //Live
+//  const live_key = "FLWPUBK-86f0110ec6117f69704419bada7183f5-X" 
+ // Test
+ const live_key = "FLWPUBK-86f0110ec6117f69704419bada7183f5-X"
+
+  const test_key = ""
+
+ const useLiveEnvironment = true;
+
+ const public_key = useLiveEnvironment ? live_key : test_key
+
+  
+  function makePayment() {
+    FlutterwaveCheckout(
+      {
+      public_key,
+      tx_ref: "Testing Payment",
+      currency: "ZAR",
+      amount: "5",
+      payment_options: "",
+      customer: {
+        email: "toyeeb.rahmon@outlook.com",
+        phone_number: "+2348184505144",
+        name: "Toyeeb Abdulrahmon",
+      },
+      callback: function (data) {
+        console.log(data);
+      },
+      onclose: function() {
+        // close modal
+      }
+    });
+  }
+</script>
+  </body>
+
+</html>
